@@ -1,7 +1,15 @@
 exports.up = function (knex) {
-  // DO YOUR MAGIC
+  return knex.shcema.createTable('cars', tbl => {
+    tbl.increments();
+    tbl.string('vin').notNullable().unique();
+    tbl.string('make').notNullable();
+    tbl.string('model').notNullable();
+    tbl.numeric('mileage').notNullable();
+    tbl.string('title');
+    tbl.string('transmission');
+  })
 };
 
 exports.down = function (knex) {
-  // DO YOUR MAGIC
+  return knex.shcema.dropTableIfExists('cars');
 };
